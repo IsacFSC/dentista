@@ -1,26 +1,255 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  scroll-behavior: smooth;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  /* ── Tipografia ── */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-quicksand: var(--font-quicksand-var), system-ui, sans-serif;
+  --font-baloo2: var(--font-baloo2-var), system-ui, sans-serif;
+  --font-national-park: "National Park", system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Sua paleta de cores oficial */
+  --color-brand-dark: #0c2c55; /* Azul Escuro (Confiança/Autoridade) */
+  --color-brand-medium: #296374; /* Azul Esverdeado/Turquesa */
+  --color-brand-light: #629faa; /* Azul Claro/Clínico */
+  --color-brand-bg2: #ededce; /* Off-White/Areia (Fundo Suave) */
+  --color-brand-bg: #eeeeee; /* Off-Areia (Fundo Mais que Suave) */
+  --color-brand-deep: #06200b; /* Quase Preto/Verde Profundo para Textos */
+
+  /* Fade */
+  --animate-fade-in: fadeIn 0.7s ease-out forwards; /* Efeitos somente para componentes */
+
+  /* Entradas */
+  --animate-slide-up: slideUp 0.7s ease-out forwards; /* Efeitos somente para componentes */
+  --animate-slide-down: slideDown 0.7s ease-out forwards; /* Efeitos somente para componentes */
+  --animate-slide-in-left: slideInLeft 0.5s ease-out forwards; /* Efeitos somente para componentes */
+  --animate-slide-in-right: slideInRight 0.7s ease-out forwards; /* Efeitos somente para componentes */
+
+  /* Efeitos contínuos */
+  --animate-float: float 4s ease-in-out infinite; /* Efeitos somente para componentes */
+  --animate-pulse-slow: pulse 3s ease-in-out infinite; /* Efeitos somente para componentes */
+
+  /* Hero */
+  --animate-slow-zoom: slowZoom 8s ease-in-out infinite alternate; /* Efeitos somente para componentes */
+
+  --animate-bubble-float: bubble-float 8s infinite ease-in-out; /* animação de bolhas */
+
+  /* Efeitos somente para componentes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-32x);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slowZoom {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.08);
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  /* animação do marcador do mapa */
+  @keyframes gs-pin-pulse {
+    from {
+      transform: scale(0.2);
+      opacity: 1;
+    }
+
+    to {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+
+  /* animação de bolhas */
+  @keyframes bubble-float {
+    0% {
+      transform: translateY(100vh) translateX(0) scale(0.8);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(50vh) translateX(20px) scale(1.1);
+    }
+    90% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(-10vh) translateX(-10px) scale(0.9);
+      opacity: 0;
+    }
   }
 }
 
+/* Força o fundo da página inteira a usar a cor de fundo da sua identidade */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ededce; /* Equivalente à sua var(--color-brand-bg) */
+  color: #06200b; /* Equivalente à sua var(--color-brand-deep) */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Classes dos efeitos para somente componentes*/
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-on-scroll-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+
+.animate-on-scroll-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-on-scroll-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+
+.animate-on-scroll-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-slow-zoom {
+  animation: slowZoom 8s ease-in-out infinite alternate;
+}
+
+.animate-slide-left-fast {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.7s ease-out forwards;
+}
+
+.animate-slide-left-mid {
+  animation: slideInLeft 0.9s ease-out forwards;
+}
+
+.animate-slide-left-slow {
+  animation: slideInLeft 1s ease-out forwards;
+}
+.animate-slide-down {
+  animation: slideInLeft 0.7s ease-out forwards;
+}
+
+/* Classes para ser usado no mapa */
+.leaflet-container {
+  background: #e5e0db;
+}
+
+.gs-pin {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.gs-pin__core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  background: #629faa;
+  border-radius: 9999px;
+  border: 3px solid white;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.gs-pin__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid rgba(98, 159, 170, 0.5);
+  animation: gs-pin-pulse 2.5s ease-out infinite;
+}
+
+.gs-pin__ring--delay {
+  animation-delay: 1.25s;
 }
