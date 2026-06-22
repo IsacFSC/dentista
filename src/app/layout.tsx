@@ -33,50 +33,102 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://mercadomais.vercel.app/",
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      "https://sorrisopremium.vercel.app"
   ),
+
   title: {
-    default: "MERCADO +MAIS — O Mercado Completo do Seu Bairro",
-    template: "%s | MERCADO +MAIS",
+    default: "Sorriso Premium | Clínica Odontológica em Campo Grande - MS",
+    template: "%s | Sorriso Premium",
   },
+
   description:
-    "Encontre carnes nobres no açougue, pães quentes na padaria, hortifrúti fresco todo dia e uma seleção completa de bebidas. O mercado ideal para as compras da sua família em Campo Grande – MS.",
-  // Adicione este bloco de ícones abaixo:
-  icons: {
-    icon: "/brand/logo-mercadomais.jpg", // Caminho para o ícone padrão da aba
-    shortcut: "/brand/logo-mercadomais.jpg",
-    apple: "/brand/logo-mercadomais.jpg", // Ícone para dispositivos iOS (opcional)
-  },
+    "Clínica odontológica em Campo Grande - MS especializada em implantes dentários, ortodontia, alinhadores invisíveis, estética dental e odontologia preventiva. Atendimento humanizado e tecnologia de ponta.",
+
+  applicationName: "Sorriso Premium",
+
   keywords: [
-    "mercado mais",
-    "mercado +mais",
-    "açougue campo grande",
-    "padaria campo grande",
-    "hortifrúti",
-    "bebidas",
-    "encarte de ofertas",
-    "supermercado bairro",
-    "Rita Vieira",
-    "Jardim Paulista",
-    "Campo Grande MS",
+    "dentista campo grande",
+    "clínica odontológica",
+    "implantes dentários",
+    "ortodontia",
+    "alinhadores invisíveis",
+    "clareamento dental",
+    "lentes de contato dental",
+    "odontologia estética",
+    "dentista campo grande ms",
+    "tratamento odontológico",
+    "sorriso premium",
   ],
+
+  authors: [
+    {
+      name: "Sorriso Premium",
+    },
+  ],
+
+  creator: "Sorriso Premium",
+
+  publisher: "Sorriso Premium",
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
+  icons: {
+    icon: "/brand/tooth.svg",
+    shortcut: "/brand/tooth.svg",
+    apple: "/brand/tooth.svg",
+  },
+
   openGraph: {
-    type: "website",
+    title:
+      "Sorriso Premium | Clínica Odontológica em Campo Grande - MS",
+
+    description:
+      "Implantes dentários, ortodontia, alinhadores invisíveis e odontologia estética com atendimento humanizado.",
+
+    url:
+      process.env.NEXT_PUBLIC_SITE_URL ??
+      "https://sorrisopremium.vercel.app",
+
+    siteName: "Sorriso Premium",
+
     locale: "pt_BR",
-    siteName: "MERCADO +MAIS",
+
+    type: "website",
+
     images: [
       {
-        url: "/assets/hero/fachada(1).jpg",
+        url: "/brand/doutores.jpg",
         width: 1200,
         height: 630,
-        alt: "MERCADO +MAIS — Completo para você",
+        alt: "Equipe da Clínica Sorriso Premium",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    images: ["/assets/hero/fachada(1).jpg"],
+
+    title:
+      "Sorriso Premium | Clínica Odontológica",
+
+    description:
+      "Implantes, ortodontia e odontologia estética em Campo Grande - MS.",
+
+    images: ["/brand/doutores.jpg"],
   },
+
+  category: "health",
 };
 
 export default function RootLayout({
