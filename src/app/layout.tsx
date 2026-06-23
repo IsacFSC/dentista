@@ -33,8 +33,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ??
-      "https://sorrisopremium.vercel.app"
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://sorrisopremium.vercel.app",
   ),
 
   title: {
@@ -90,15 +89,13 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title:
-      "Sorriso Premium | Clínica Odontológica em Campo Grande - MS",
+    title: "Sorriso Premium | Clínica Odontológica em Campo Grande - MS",
 
     description:
       "Implantes dentários, ortodontia, alinhadores invisíveis e odontologia estética com atendimento humanizado.",
 
     url:
-      process.env.NEXT_PUBLIC_SITE_URL ??
-      "https://sorrisopremium.vercel.app",
+      process.env.NEXT_PUBLIC_SITE_URL ?? "https://sorrisopremium.vercel.app",
 
     siteName: "Sorriso Premium",
 
@@ -119,8 +116,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title:
-      "Sorriso Premium | Clínica Odontológica",
+    title: "Sorriso Premium | Clínica Odontológica",
 
     description:
       "Implantes, ortodontia e odontologia estética em Campo Grande - MS.",

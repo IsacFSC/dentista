@@ -14,8 +14,17 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import ContactMap from "@/components/map/ContactMap";
+import {
+  buildCustomWhatsAppUrl,
+  DENTIST_DEFAULT_MESSAGE,
+  DENTIST_PHONE,
+} from "@/lib/dataNumber";
 
 export default function Contact() {
+  const whatsAppLink = buildCustomWhatsAppUrl(
+    DENTIST_PHONE,
+    DENTIST_DEFAULT_MESSAGE,
+  );
   const status = getClinicStatus();
   const shouldReduceMotion = useReducedMotion();
 
@@ -185,7 +194,7 @@ export default function Contact() {
 
         {/* Bloco de Ação Rápida (CTA) */}
         <div className="flex w-full justify-center md:w-auto">
-          <CTAButton href="https://wa.me/5567999999999" external>
+          <CTAButton href={whatsAppLink} external>
             <FaWhatsapp className="mr-2 h-5 w-5 shrink-0" />
             Agendar uma Avaliação
           </CTAButton>

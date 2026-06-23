@@ -1,8 +1,17 @@
 import BubbleBackground from "@/effects/BubbleBackground";
+import {
+  buildCustomWhatsAppUrl,
+  DENTIST_DEFAULT_MESSAGE,
+  DENTIST_PHONE,
+} from "@/lib/dataNumber";
 import Link from "next/link";
-import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaWhatsapp, FaTiktok } from "react-icons/fa";
 
 export default function Footer() {
+  const whatsAppLink = buildCustomWhatsAppUrl(
+    DENTIST_PHONE,
+    DENTIST_DEFAULT_MESSAGE,
+  );
   const currentYear = new Date().getFullYear();
 
   return (
@@ -28,7 +37,7 @@ export default function Footer() {
           <ul className="flex flex-col space-y-2 text-sm">
             <li>
               <Link
-                href="#inicio"
+                href="/"
                 className="hover:text-brand-light transition-colors"
               >
                 Início
@@ -36,7 +45,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="#servicos"
+                href="/services"
                 className="hover:text-brand-light transition-colors"
               >
                 Nossos Serviços
@@ -44,7 +53,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="#sobre"
+                href="/about"
                 className="hover:text-brand-light transition-colors"
               >
                 Sobre Nós
@@ -52,7 +61,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="#contato"
+                href="/contact"
                 className="hover:text-brand-light transition-colors"
               >
                 Contato e Localização
@@ -82,9 +91,9 @@ export default function Footer() {
             <a
               href="#"
               className="transition-colors hover:text-white"
-              aria-label="WhatsApp"
+              aria-label="TikTok"
             >
-              <FaWhatsapp />
+              <FaTiktok />
             </a>
           </div>
           <div className="text-brand-bg/60 space-y-1 text-xs">

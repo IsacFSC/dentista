@@ -62,7 +62,7 @@ export default function ContactMap() {
   return (
     <div
       ref={containerRef}
-      className="border-brand-deep/20 animate-slide-in-right z-0 h-[575px] w-full overflow-hidden rounded-3xl border-2"
+      className="border-brand-deep/20 animate-slide-in-right z-0 h-[100%] w-full overflow-hidden rounded-3xl border-2"
     />
   );
 }

@@ -1,4 +1,9 @@
 import CTAButton from "@/components/CTAButton";
+import {
+  buildCustomWhatsAppUrl,
+  DENTIST_DEFAULT_MESSAGE,
+  DENTIST_PHONE,
+} from "@/lib/dataNumber";
 import Image from "next/image";
 import { JSX } from "react";
 import { BiStar } from "react-icons/bi";
@@ -14,6 +19,11 @@ interface BadgeItem {
 }
 
 export default function Hero() {
+  const whatsAppLink = buildCustomWhatsAppUrl(
+    DENTIST_PHONE,
+    DENTIST_DEFAULT_MESSAGE,
+  );
+
   const badges: BadgeItem[] = [
     {
       icon: <FaTooth />,
@@ -66,7 +76,7 @@ export default function Hero() {
           </p>
 
           {/* Elemento 3: Atraso de 300ms */}
-          <p className="text-brand-deep/80 animate-slide-left-mid font-sans text-base leading-relaxed font-normal md:text-lg">
+          <p className="text-brand-deep/80 animate-slide-left-mid px-1.5 font-sans text-base leading-relaxed font-normal md:text-lg">
             Implantes, Ortodontia e Estética Dental com tecnologia digital,
             atendimento humanizado e resultados naturais para toda a família.
           </p>
@@ -74,7 +84,7 @@ export default function Hero() {
           {/* Elemento 4: Atraso de 450ms */}
           <div className="animate-slide-left-slow hidden w-full pt-4 sm:block sm:w-auto">
             <a
-              href="https://wa.me"
+              href={whatsAppLink}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-brand-dark hover:bg-brand-dark/90 inline-block w-full rounded-lg border border-white/20 px-8 py-4 text-center font-sans text-xs font-bold tracking-wider text-white uppercase shadow-lg backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] active:scale-95 sm:w-auto"
@@ -126,7 +136,7 @@ export default function Hero() {
         {/* Botão: vira 'order-2' no mobile, ficando abaixo de tudo (inclusive da imagem no fluxo global) */}
         <div className="bg-brand-bg2 animate-slide-up order-1 block w-full px-2 pb-6 sm:hidden sm:w-auto lg:order-0">
           <a
-            href="https://wa.me"
+            href={whatsAppLink}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-brand-dark hover:bg-brand-dark/90 inline-block w-full rounded-lg border border-white/20 px-8 py-4 text-center font-sans text-xs font-bold tracking-wider text-white uppercase shadow-lg backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] active:scale-95 sm:w-auto"
@@ -230,9 +240,11 @@ export default function Hero() {
       {/* Localização e CTA */}
       <div>
         <p className="text-sm">📍 Campo Grande - MS</p>
-        <p>Atendemos pacientes de toda Campo Grande e região.</p>
+        <p className="px-4">
+          Atendemos pacientes de toda Campo Grande e região.
+        </p>
         <div className="m-8 mx-auto flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <CTAButton href="https://wa.me/5567999999999" external>
+          <CTAButton href={whatsAppLink} external>
             <FaWhatsapp className="mr-2 h-5 w-5" />
             Agendar uma Avaliação
           </CTAButton>

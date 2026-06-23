@@ -4,10 +4,19 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Hook para identificar a rota atual
 import { FaBars, FaTimes } from "react-icons/fa";
+import {
+  buildCustomWhatsAppUrl,
+  DENTIST_DEFAULT_MESSAGE,
+  DENTIST_PHONE,
+} from "@/lib/dataNumber";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname(); // Captura a rota atual (ex: "/" ou "/services")
+  const whatsAppLink = buildCustomWhatsAppUrl(
+    DENTIST_PHONE,
+    DENTIST_DEFAULT_MESSAGE,
+  );
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -45,7 +54,7 @@ export default function Header() {
             );
           })}
           <Link
-            href="/contact"
+            href={whatsAppLink}
             className="bg-brand-light hover:bg-brand-light/90 text-brand-dark rounded-lg px-4 py-2 text-xs font-bold tracking-wider uppercase shadow-sm transition-all active:scale-95"
           >
             Agendar
@@ -87,7 +96,7 @@ export default function Header() {
             );
           })}
           <Link
-            href="/contact"
+            href={whatsAppLink}
             onClick={() => setIsOpen(false)}
             className="bg-brand-light text-brand-dark mt-4 rounded-lg py-3 text-center font-bold shadow-md transition-all active:scale-[0.98]"
           >
